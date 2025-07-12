@@ -8,12 +8,10 @@ const app = express();
 const PORT = 3001; // Usamos 3001 para no chocar con el puerto de React (que suele ser 3000 o 5173)
 
 // 4. Crear nuestra primera "ruta" (endpoint)
-//    Cuando alguien visite la raíz de nuestro servidor (http://localhost:3001/),
-//    se ejecutará esta función.
-app.get('/', (req, res) => {
-  // req: objeto que representa la petición del cliente (request)
-  // res: objeto que representa la respuesta que le enviaremos (response)
-  res.send('¡Hola desde el servidor de mi-tienda-catalogo!');
+//    Cambiamos la ruta a '/api'
+app.get('/api', (req, res) => {
+  // Ahora enviamos un objeto JSON, que es más común en las APIs
+  res.json({ message: '¡Hola desde la API del servidor!' });
 });
 
 // 5. Poner el servidor a "escuchar" peticiones en el puerto definido
