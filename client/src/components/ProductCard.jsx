@@ -1,12 +1,14 @@
 import React from 'react';
+// 1. Importa el módulo CSS. Vite lo convertirá en un objeto 'styles'.
+import styles from './ProductCard.module.css';
 
-// Este es un componente funcional. Recibe 'props' como argumento.
-// Usamos desestructuración para acceder directamente a la propiedad 'product'.
 function ProductCard({ product }) {
   return (
-    <li className="product-card">
-      <h2>{product.name}</h2>
-      <p>Precio: ${product.price}</p>
+    // 2. Usa el objeto 'styles' para aplicar las clases.
+    // La clase '.card' en el CSS se convierte en 'styles.card'.
+    <li className={styles.card}>
+      <h2 className={styles.name}>{product.name}</h2>
+      <p className={styles.price}>Precio: ${product.price}</p>
       <p>Categoría: {product.category}</p>
     </li>
   );
