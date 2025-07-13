@@ -7,11 +7,25 @@ const app = express();
 // 3. Definir el puerto en el que escuchará nuestro servidor
 const PORT = 3001; // Usamos 3001 para no chocar con el puerto de React (que suele ser 3000 o 5173)
 
+// DATOS DE MUESTRA (MOCK DATA)
+const products = [
+  { id: 1, name: 'Laptop Gamer XYZ', price: 1200, category: 'Electrónica' },
+  { id: 2, name: 'Teclado Mecánico RGB', price: 150, category: 'Accesorios' },
+  { id: 3, name: 'Monitor Curvo 27"', price: 400, category: 'Monitores' },
+  { id: 4, name: 'Mouse Inalámbrico Pro', price: 80, category: 'Accesorios' },
+  { id: 5, name: 'Silla Ergonómica', price: 300, category: 'Mobiliario' }
+];
+
 // 4. Crear nuestra primera "ruta" (endpoint)
 //    Cambiamos la ruta a '/api'
 app.get('/api', (req, res) => {
   // Ahora enviamos un objeto JSON, que es más común en las APIs
   res.json({ message: '¡Hola desde la API del servidor!' });
+});
+
+// NUEVA RUTA: Endpoint para obtener todos los productos
+app.get('/api/products', (req, res) => {
+  res.json(products); // Enviamos el array de productos como respuesta JSON
 });
 
 // 5. Poner el servidor a "escuchar" peticiones en el puerto definido
