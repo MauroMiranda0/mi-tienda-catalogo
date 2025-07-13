@@ -3,6 +3,8 @@ const express = require('express');
 
 // 2. Crear una instancia de la aplicación Express
 const app = express();
+app.use(express.json()); // <-- ¡MUY IMPORTANTE! Middleware para parsear JSON
+// ...
 
 // 3. Definir el puerto en el que escuchará nuestro servidor
 const PORT = 3001; // Usamos 3001 para no chocar con el puerto de React (que suele ser 3000 o 5173)
@@ -44,6 +46,23 @@ app.get('/api/products/:id', (req, res) => {
     res.status(404).json({ message: 'Producto no encontrado' });
   }
 });
+
+// ...
+// Endpoint para recibir datos del formulario de contacto
+app.post('/api/contact', (req, res) => {
+  const { name, email, message } = req.body;
+
+  console.log('--- Nuevo Mensaje de Contacto ---');
+  console.log(`Nombre: ${name}`);
+  console.log(`Email: ${email}`);
+  console.log(`Mensaje: ${message}`);
+  console.log('-------------------------------');
+
+  // En una app real, aquí enviarías un email o guardarías en la BD.
+  // Por ahora, solo confirmamos que lo recibimos.
+  res.status(200).json({ success: true, message: '¡Mensaje recibido! Gracias por contactarnos.' });
+});
+// ...
 
 // 5. Poner el servidor a "escuchar" peticiones en el puerto definido
 app.listen(PORT, () => {

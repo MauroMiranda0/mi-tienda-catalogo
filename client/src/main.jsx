@@ -5,25 +5,24 @@ import App from './App';
 import './index.css';
 
 // Importamos los componentes de las páginas que creaste
+// ... imports ...
+import HomePage from './pages/HomePage/HomePage.jsx';
 import DetalleProducto from './pages/DetalleProducto/DetalleProducto.jsx';
-// Por ahora, crearemos placeholders para las otras páginas
-// import CarritoDeCompras from './pages/CarritoDeCompras/CarritoDeCompras.jsx';
-// import Contacto from './pages/Contacto/Contacto.jsx';
+import Contacto from './pages/Contacto/Contacto.jsx'; // Asegúrate de importarla
+// ...
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* La ruta raíz '/' mostrará nuestro listado de productos */}
-        <Route path="/" element={<App />} />
-        
-        {/* Ruta dinámica para el detalle de producto */}
-        {/* El :id le dice al router que esta parte de la URL es variable */}
-        <Route path="/producto/:id" element={<DetalleProducto />} />
-
-        {/* Aquí añadiríamos las otras rutas en el futuro */}
-        {/* <Route path="/carrito" element={<CarritoDeCompras />} /> */}
-        {/* <Route path="/contacto" element={<Contacto />} /> */}
+        {/* Ruta Padre - Nuestro Layout */}
+        <Route path="/" element={<App />}>
+          {/* Rutas Hijas que se renderizarán dentro del Outlet */}
+          <Route index element={<HomePage />} /> {/* 'index' marca la ruta por defecto ('/') */}
+          <Route path="producto/:id" element={<DetalleProducto />} />
+          <Route path="contacto" element={<Contacto />} />
+          {/* <Route path="carrito" element={<... />} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
