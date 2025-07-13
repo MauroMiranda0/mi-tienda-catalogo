@@ -1,20 +1,34 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--background-dark);
-  color: var(--light-bg);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
+  background-color: var(--light-bg);
+  padding: 0 2rem;
+  height: 70px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
+/* LOGO + TEXTO */
 .brand {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--light-bg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--text-heading);
 }
 
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+/* ENLACES */
 .navLinks {
   list-style: none;
   display: flex;
@@ -24,37 +38,50 @@
 }
 
 .link {
-  color: var(--light-bg);
   text-decoration: none;
   font-size: 1rem;
-  padding: 0.5rem 0;
-  position: relative;
-  transition: color 0.3s;
+  color: var(--background-dark);
+  transition: color 0.3s ease;
 }
 
-.link::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--primary-color);
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.link:hover::after, .activeLink::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.link:hover, .activeLink {
-  color: white;
+.link:hover {
+  color: var(--primary-color);
 }
 
 .activeLink {
-  composes: link; /* Hereda los estilos de .link */
-  color: white;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ICONOS */
+.icons {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.icons :global(svg):hover {
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    height: auto;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .icons {
+    margin-top: 1rem;
+  }
 }
