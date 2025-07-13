@@ -1,0 +1,84 @@
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    color: var(--text-heading);
+}
+
+/* Usamos flexbox para el layout de la tarjeta */
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que se apile en pantallas pequeñas */
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+    /* Alinea los items arriba */
+}
+
+.productImage {
+    flex: 1 1 300px;
+    /* Flex-grow, flex-shrink, flex-basis */
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.productInfo {
+    flex: 1 1 350px;
+}
+
+.productInfo h1 {
+    margin-top: 0;
+    color: var(--text-heading);
+}
+
+.price {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.description {
+    line-height: 1.6;
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.backLink:hover {
+    text-decoration: underline;
+}
+
+.addToCartButton {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+}
+
+.addToCartButton:hover {
+    background: var(--secondary-color);
+}

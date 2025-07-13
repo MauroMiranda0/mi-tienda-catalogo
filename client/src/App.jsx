@@ -2,26 +2,15 @@ import { useState, useEffect } from 'react';
 import ProductList from './components/ProductList'; // Importamos ProductList
 import './App.css';
 
-// --- ¡NUEVO! Importamos las imágenes ---
-import laptopImage from './assets/images/laptop.jpg';
-import tecladoImage from './assets/images/teclado.jpg';
-import monitorImage from './assets/images/monitor.jpg';
-import mouseImage from './assets/images/mouse.jpg';
-import sillaImage from './assets/images/silla.jpg';
+// --- ¡CAMBIO! ---
+// Importamos el objeto de imágenes directamente desde nuestro índice.
+import productImages from './assets/images/index.js';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Un mapa para asociar el ID del producto con su imagen importada
-    const productImages = {
-      1: laptopImage,
-      2: tecladoImage,
-      3: monitorImage,
-      4: mouseImage,
-      5: sillaImage
-    };
     fetch('/api/products')
       .then(res => res.json())
       .then(serverProducts => {

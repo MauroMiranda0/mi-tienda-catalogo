@@ -6,7 +6,7 @@ import styles from './ProductList.module.css'; // Importamos su módulo
 function ProductList({ products }) {
   return (
     <ul className={styles.list}>
-      {products.map((product, index) => (
+      {products.map((product) => (
         <ProductCard
           key={product.id}
           product={product}

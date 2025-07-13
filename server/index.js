@@ -28,7 +28,24 @@ app.get('/api/products', (req, res) => {
   res.json(products); // Enviamos el array de productos como respuesta JSON
 });
 
+// --- NUEVA RUTA ---
+// Endpoint para obtener un producto por su ID
+// :id es un parámetro dinámico
+app.get('/api/products/:id', (req, res) => {
+  // Obtenemos el ID de los parámetros de la URL
+  const productId = parseInt(req.params.id);
+  // Buscamos el producto en nuestro array
+  const product = products.find(p => p.id === productId);
+
+  if (product) {
+    res.json(product); // Si lo encontramos, lo enviamos
+  } else {
+    // Si no, enviamos un error 404 (No Encontrado)
+    res.status(404).json({ message: 'Producto no encontrado' });
+  }
+});
+
 // 5. Poner el servidor a "escuchar" peticiones en el puerto definido
 app.listen(PORT, () => {
   console.log(`Servidor corriendo exitosamente en http://localhost:${PORT}`);
-});
+}); 
